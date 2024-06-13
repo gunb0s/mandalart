@@ -1,0 +1,18 @@
+### create mandalart
+POST http://0.0.0.0:8080/mandalarts
+Content-Type: application/json
+
+{
+  "id": "mandalart id",
+  "title": "mandalart title"
+}
+
+### get mandalart detail
+GET http://0.0.0.0:8080/mandalarts/1
+
+### create main goal
+POST http://0.0.0.0:8080/mandalarts/1/main-goals
+
+### create sub goal
+POST http://0.0.0.0:8080/mandalarts/1/main-goals/1/sub-goals
+
