@@ -24,7 +24,15 @@ POST http://0.0.0.0:8080/mandalarts/1/main-goals/1/sub-goals
 Content-Type: application/json
 
 {
-  "location": -1,
+  "location": 1,
   "goal": "goal"
+}
+
+### create sub goal action
+POST http://0.0.0.0:8080/mandalarts/1/main-goals/1/sub-goals/1/sub-goal-actions
+Content-Type: application/json
+
+{
+  "action": "Do Right Now"
 }
 

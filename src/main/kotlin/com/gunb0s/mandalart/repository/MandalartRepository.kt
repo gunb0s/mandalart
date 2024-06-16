@@ -8,7 +8,15 @@ object MandalartRepository {
     private val mandalarts = mutableMapOf<String, Mandalart>()
 
     fun findById(id: String) = mandalarts[id]
-    fun findMainGoalByLocation(id: String, location: Int): MainGoal? = mandalarts[id]?.mainGoals?.find { it.location == location }
+
+    fun findMainGoalByLocation(id: String, location: Int): MainGoal?
+        = mandalarts[id]?.mainGoals?.find { it.location == location }
+
+    fun findSubGoalByLocation(id: String, mainGoalLocation: Int, subGoalLocation: Int)
+         = mandalarts[id]?.
+            mainGoals?.find { it.location == mainGoalLocation }?.
+            subGoals?.find { it.location == subGoalLocation }
+
     fun create(title: String, goal: String): Mandalart {
         count++
         val id = count.toString()
