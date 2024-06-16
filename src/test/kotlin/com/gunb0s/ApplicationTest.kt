@@ -1,21 +1,39 @@
 package com.gunb0s
 
-import com.gunb0s.plugins.*
-import io.ktor.client.request.*
-import io.ktor.client.statement.*
-import io.ktor.http.*
-import io.ktor.server.testing.*
-import kotlin.test.*
+import com.gunb0s.mandalart.Mandalart
+import io.ktor.client.request.get
+import io.ktor.client.request.post
+import io.ktor.client.request.setBody
+import io.ktor.http.ContentType
+import io.ktor.http.HttpStatusCode
+import io.ktor.http.contentType
+import io.ktor.serialization.kotlinx.json.json
+import io.ktor.server.testing.testApplication
+import kotlin.test.Test
+import kotlin.test.assertEquals
 
 class ApplicationTest {
     @Test
-    fun testRoot() = testApplication {
-        application {
-            configureRouting()
+    fun getMandalartById() = testApplication {
+        val response = client.get("/mandalarts/1")
+
+        assertEquals(HttpStatusCode.OK, response.status)
+        assertEquals("json", response.contentType()?.contentSubtype)
+    }
+
+    @Test
+    fun createMandalart() = testApplication {
+        val client = createClient {
+            install(io.ktor.client.plugins.contentnegotiation.ContentNegotiation) {
+                json()
+            }
         }
-        client.get("/").apply {
-            assertEquals(HttpStatusCode.OK, status)
-            assertEquals("Hello World!", bodyAsText())
+
+        val response = client.post("/mandalarts") {
+            contentType(ContentType.Application.Json)
+            setBody(Mandalart("test", "test"))
         }
+
+        assertEquals(HttpStatusCode.OK, response.status)
     }
 }

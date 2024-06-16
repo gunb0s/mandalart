@@ -3,8 +3,8 @@ POST http://0.0.0.0:8080/mandalarts
 Content-Type: application/json
 
 {
-  "id": "mandalart id",
-  "title": "mandalart title"
+  "title": "mandalart title",
+  "goal": "mandalart goal"
 }
 
 ### get mandalart detail

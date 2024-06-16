@@ -1,10 +1,9 @@
-package com.gunb0s.mandalart
+package com.gunb0s.mandalart.dto
 
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Mandalart(
-    val id: String,
+data class CreateMandalartRequest(
     val title: String,
     val goal: String
 )
