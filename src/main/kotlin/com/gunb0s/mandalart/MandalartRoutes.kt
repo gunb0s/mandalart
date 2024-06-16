@@ -38,15 +38,10 @@ fun Route.mandalartRouting() {
 
         get("{id?}") {
             val id = call.parameters["id"]
-                ?: return@get call.respondText(
-                    "Missing id", status = HttpStatusCode.BadRequest
-                )
+                ?: throw IllegalArgumentException("Missing id")
 
             val mandalart = MandalartRepository.findById(id)
-                ?: return@get call.respondText(
-                "No mandalart with id $id",
-                status = HttpStatusCode.NotFound
-            )
+                ?: throw IllegalArgumentException("No mandalart with id $id")
 
             val dto = MandalartDto.fromModel(mandalart)
 
@@ -55,15 +50,10 @@ fun Route.mandalartRouting() {
 
         post("{id}/main-goals") {
             val id = call.parameters["id"]
-                ?: return@post call.respondText(
-                    "Missing id", status = HttpStatusCode.BadRequest
-                )
+                ?: throw IllegalArgumentException("Missing id")
 
             val mandalart = MandalartRepository.findById(id)
-                ?: return@post call.respondText(
-                    "No mandalart with id $id",
-                    status = HttpStatusCode.NotFound
-                )
+                ?: throw IllegalArgumentException("No mandalart with id $id")
 
             val (row, col, goal) = call.receive<CreateMainGoalRequest>()
 
@@ -72,6 +62,7 @@ fun Route.mandalartRouting() {
             mandalart.addMainGoal(mainGoal)
 
             call.respond(
+                HttpStatusCode.Created,
                 ResponseDto(
                     data = CreateMainGoalResponse(
                         id,
