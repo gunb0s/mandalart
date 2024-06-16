@@ -1,6 +1,6 @@
 package com.gunb0s
 
-import com.gunb0s.mandalart.Mandalart
+import com.gunb0s.mandalart.model.Mandalart
 import io.ktor.client.request.get
 import io.ktor.client.request.post
 import io.ktor.client.request.setBody

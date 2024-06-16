@@ -1,16 +1,11 @@
-package com.gunb0s.mandalart
+package com.gunb0s.mandalart.repository
+
+import com.gunb0s.mandalart.model.Mandalart
 
 object MandalartRepository {
-    private var count = 1
-    private val mandalarts = mutableMapOf(
-        "1" to Mandalart(
-            id = "1",
-            title = "Mandalart 1",
-            goal = "Goal 1"
-        )
-    )
+    private var count = 0
+    private val mandalarts = mutableMapOf<String, Mandalart>()
 
-    fun find() = mandalarts.values.toList()
     fun findById(id: String) = mandalarts[id]
     fun create(title: String, goal: String): Mandalart {
         count++
