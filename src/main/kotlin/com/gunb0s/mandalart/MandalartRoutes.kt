@@ -24,7 +24,7 @@ import io.ktor.server.routing.post
 import io.ktor.server.routing.route
 import java.time.LocalDateTime
 
-fun Route.mandalartRouting() {
+fun Route.createMandalartRoute() {
     route("/mandalarts") {
         post {
             val request = call.receive<CreateMandalartRequest>()
