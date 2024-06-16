@@ -1,5 +1,6 @@
 package com.gunb0s.mandalart
 
+import com.gunb0s.ResponseDto
 import com.gunb0s.mandalart.dto.CreateMainGoalRequest
 import com.gunb0s.mandalart.dto.CreateMainGoalResponse
 import com.gunb0s.mandalart.dto.CreateMandalartRequest
@@ -27,7 +28,12 @@ fun Route.mandalartRouting() {
                 goal = request.goal
             )
 
-            call.respond(CreateMandalartResponse(mandalart.id))
+            call.respond(
+                HttpStatusCode.Created,
+                ResponseDto(
+                    data = CreateMandalartResponse(mandalart.id)
+                )
+            )
         }
 
         get("{id?}") {
@@ -44,7 +50,7 @@ fun Route.mandalartRouting() {
 
             val dto = MandalartDto.fromModel(mandalart)
 
-            call.respond(dto)
+            call.respond(ResponseDto(data = dto))
         }
 
         post("{id}/main-goals") {
@@ -66,10 +72,12 @@ fun Route.mandalartRouting() {
             mandalart.addMainGoal(mainGoal)
 
             call.respond(
-                CreateMainGoalResponse(
-                    id,
-                    mainGoal.row,
-                    mainGoal.col
+                ResponseDto(
+                    data = CreateMainGoalResponse(
+                        id,
+                        mainGoal.row,
+                        mainGoal.col
+                    )
                 )
             )
         }
