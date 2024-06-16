@@ -3,7 +3,7 @@ package com.gunb0s.mandalart.dto
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class CreateMainGoalRequest(
+data class CreateSubGoalRequest(
     val location: Int,
-    val goal: String
+    val goal: String,
 )

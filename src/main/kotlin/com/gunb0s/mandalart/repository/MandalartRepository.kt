@@ -1,5 +1,6 @@
 package com.gunb0s.mandalart.repository
 
+import com.gunb0s.mandalart.model.MainGoal
 import com.gunb0s.mandalart.model.Mandalart
 
 object MandalartRepository {
@@ -7,6 +8,7 @@ object MandalartRepository {
     private val mandalarts = mutableMapOf<String, Mandalart>()
 
     fun findById(id: String) = mandalarts[id]
+    fun findMainGoalByLocation(id: String, location: Int): MainGoal? = mandalarts[id]?.mainGoals?.find { it.location == location }
     fun create(title: String, goal: String): Mandalart {
         count++
         val id = count.toString()

@@ -15,11 +15,16 @@ POST http://0.0.0.0:8080/mandalarts/1/main-goals
 Content-Type: application/json
 
 {
-  "row": 4,
-  "col": 4,
+  "location": 1,
   "goal": "goal"
 }
 
 ### create sub goal
 POST http://0.0.0.0:8080/mandalarts/1/main-goals/1/sub-goals
+Content-Type: application/json
+
+{
+  "location": -1,
+  "goal": "goal"
+}
 

@@ -5,14 +5,16 @@ import com.gunb0s.mandalart.dto.CreateMainGoalRequest
 import com.gunb0s.mandalart.dto.CreateMainGoalResponse
 import com.gunb0s.mandalart.dto.CreateMandalartRequest
 import com.gunb0s.mandalart.dto.CreateMandalartResponse
+import com.gunb0s.mandalart.dto.CreateSubGoalRequest
+import com.gunb0s.mandalart.dto.CreateSubGoalResponse
 import com.gunb0s.mandalart.dto.MandalartDto
 import com.gunb0s.mandalart.model.MainGoal
+import com.gunb0s.mandalart.model.SubGoal
 import com.gunb0s.mandalart.repository.MandalartRepository
 import io.ktor.http.HttpStatusCode
 import io.ktor.server.application.call
 import io.ktor.server.request.receive
 import io.ktor.server.response.respond
-import io.ktor.server.response.respondText
 import io.ktor.server.routing.Route
 import io.ktor.server.routing.get
 import io.ktor.server.routing.post
@@ -55,9 +57,9 @@ fun Route.mandalartRouting() {
             val mandalart = MandalartRepository.findById(id)
                 ?: throw IllegalArgumentException("No mandalart with id $id")
 
-            val (row, col, goal) = call.receive<CreateMainGoalRequest>()
+            val (location, goal) = call.receive<CreateMainGoalRequest>()
 
-            val mainGoal = MainGoal(row, col, goal)
+            val mainGoal = MainGoal(location, goal)
 
             mandalart.addMainGoal(mainGoal)
 
@@ -66,15 +68,37 @@ fun Route.mandalartRouting() {
                 ResponseDto(
                     data = CreateMainGoalResponse(
                         id,
-                        mainGoal.row,
-                        mainGoal.col
+                        mainGoal.location
                     )
                 )
             )
         }
 
-        post("{id}/main-goals/{mainGoalId}/sub-goals") {
-            call.respondText { "Sub goals" }
+        post("{id}/main-goals/{mainGoalLocation}/sub-goals") {
+            val id = call.parameters["id"]
+                ?: throw IllegalArgumentException("Missing Mandalart id")
+            val mainGoalLocation = call.parameters["mainGoalLocation"]
+                ?.toInt()
+                ?: throw IllegalArgumentException("Missing MainGoal location")
+
+            val mainGoal = MandalartRepository.findMainGoalByLocation(id, mainGoalLocation)
+                ?: throw IllegalArgumentException("No MainGoal with location $mainGoalLocation")
+
+            val (location, goal) = call.receive<CreateSubGoalRequest>()
+            val subGoal = SubGoal(location, goal)
+
+            mainGoal.addSubGoal(subGoal)
+
+            call.respond(
+                HttpStatusCode.Created,
+                ResponseDto(
+                    data = CreateSubGoalResponse(
+                        id,
+                        mainGoal.location,
+                        subGoal.location
+                    )
+                )
+            )
         }
     }
 }
