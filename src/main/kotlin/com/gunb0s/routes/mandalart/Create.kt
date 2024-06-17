@@ -12,12 +12,12 @@ import io.ktor.server.routing.*
 
 fun Route.createMandalartRoute() {
     post {
-        val request = call.receive<CreateMandalartRequest>()
+        val (title, goal) = call.receive<CreateMandalartRequest>()
 
         val mandalart =
             MandalartRepository.create(
-            title = request.title,
-            goal = request.goal
+            title = title,
+            goal = goal
         )
 
         call.respond(

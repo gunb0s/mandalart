@@ -31,4 +31,8 @@ object MandalartRepository {
 
         return mandalart
     }
+
+    fun delete(id: String) {
+        mandalarts.remove(id)
+    }
 }
