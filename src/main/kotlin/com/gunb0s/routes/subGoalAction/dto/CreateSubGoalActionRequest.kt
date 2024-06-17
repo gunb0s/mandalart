@@ -1,4 +1,4 @@
-package com.gunb0s.subGoalAction.dto
+package com.gunb0s.routes.subGoalAction.dto
 
 import kotlinx.serialization.Serializable
 

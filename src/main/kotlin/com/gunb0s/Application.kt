@@ -1,5 +1,6 @@
 package com.gunb0s
 
+import com.gunb0s.common.dto.ResponseDto
 import com.gunb0s.plugins.configureSerialization
 import com.gunb0s.plugins.mandalartRoutes
 import io.ktor.http.HttpStatusCode

@@ -1,4 +1,4 @@
-package com.gunb0s
+package com.gunb0s.common.dto
 
 import kotlinx.serialization.Serializable
 

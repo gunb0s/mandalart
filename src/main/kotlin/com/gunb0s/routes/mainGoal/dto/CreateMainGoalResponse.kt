@@ -1,4 +1,4 @@
-package com.gunb0s.mandalart.dto
+package com.gunb0s.routes.mainGoal.dto
 
 import kotlinx.serialization.Serializable
 

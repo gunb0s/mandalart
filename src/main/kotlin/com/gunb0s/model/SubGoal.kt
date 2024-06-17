@@ -1,6 +1,4 @@
-package com.gunb0s.mandalart.model
-
-import com.gunb0s.subGoalAction.model.SubGoalAction
+package com.gunb0s.model
 
 data class SubGoal(
     val location: Int,

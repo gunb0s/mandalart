@@ -1,4 +1,4 @@
-package com.gunb0s.mandalart.model
+package com.gunb0s.model
 
 data class Mandalart(
     val id: String,
