@@ -4,8 +4,12 @@ import com.gunb0s.model.MainGoal
 import com.gunb0s.model.Mandalart
 
 object MandalartRepository {
-    private var count = 0
-    private val mandalarts = mutableMapOf<String, Mandalart>()
+    private var count = 1
+    private val mandalarts = mutableMapOf<String, Mandalart>(
+        "1" to Mandalart(
+            "1", title = "Hi", goal = "Complete this"
+        )
+    )
 
     fun findById(id: String) = mandalarts[id]
 
