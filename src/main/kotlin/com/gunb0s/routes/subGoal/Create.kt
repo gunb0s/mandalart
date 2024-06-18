@@ -1,15 +1,16 @@
 package com.gunb0s.routes.subGoal
 
 import com.gunb0s.common.dto.ResponseDto
-import com.gunb0s.routes.subGoal.dto.CreateSubGoalRequest
-import com.gunb0s.routes.subGoal.dto.CreateSubGoalResponse
 import com.gunb0s.model.SubGoal
 import com.gunb0s.repository.MandalartRepository
-import io.ktor.http.*
-import io.ktor.server.application.*
-import io.ktor.server.request.*
-import io.ktor.server.response.*
-import io.ktor.server.routing.*
+import com.gunb0s.routes.subGoal.dto.CreateSubGoalRequest
+import com.gunb0s.routes.subGoal.dto.CreateSubGoalResponse
+import io.ktor.http.HttpStatusCode
+import io.ktor.server.application.call
+import io.ktor.server.request.receive
+import io.ktor.server.response.respond
+import io.ktor.server.routing.Route
+import io.ktor.server.routing.post
 
 fun Route.createSubGoalRoute() {
     post("{id}/main-goals/{mainGoalLocation}/sub-goals") {
@@ -31,9 +32,8 @@ fun Route.createSubGoalRoute() {
             HttpStatusCode.Created,
             ResponseDto(
                 data = CreateSubGoalResponse(
-                    id,
-                    mainGoal.location,
-                    subGoal.location
+                    subGoal.location,
+                    subGoal.goal
                 )
             )
         )
