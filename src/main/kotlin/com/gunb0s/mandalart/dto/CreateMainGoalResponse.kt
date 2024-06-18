@@ -6,4 +6,5 @@ import kotlinx.serialization.Serializable
 data class CreateMainGoalResponse(
     val mandalartId: String,
     val location: Int,
+    val goal: String,
 )

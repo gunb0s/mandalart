@@ -72,7 +72,8 @@ fun Route.createMandalartRoute() {
                 ResponseDto(
                     data = CreateMainGoalResponse(
                         id,
-                        mainGoal.location
+                        mainGoal.location,
+                        mainGoal.goal
                     )
                 )
             )
