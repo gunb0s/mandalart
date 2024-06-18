@@ -1,10 +1,10 @@
-package com.gunb0s.mandalart.dto
+package com.gunb0s.routes.mainGoal.dto
 
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class CreateSubGoalResponse(
+data class CreateMainGoalResponse(
     val mandalartId: String,
-    val mainGoalLocation: Int,
     val location: Int,
+    val goal: String,
 )

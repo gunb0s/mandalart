@@ -1,9 +1,9 @@
 package com.gunb0s
 
-import com.gunb0s.mandalart.dto.CreateMainGoalRequest
-import com.gunb0s.mandalart.dto.CreateMandalartRequest
-import com.gunb0s.mandalart.dto.CreateSubGoalRequest
-import com.gunb0s.subGoalAction.dto.CreateSubGoalActionRequest
+import com.gunb0s.routes.mainGoal.dto.CreateMainGoalRequest
+import com.gunb0s.routes.mandalart.dto.CreateMandalartRequest
+import com.gunb0s.routes.subGoal.dto.CreateSubGoalRequest
+import com.gunb0s.routes.subGoalAction.dto.CreateSubGoalActionRequest
 import io.ktor.client.request.get
 import io.ktor.client.request.post
 import io.ktor.client.request.setBody
@@ -34,10 +34,12 @@ class ApplicationTest {
 
         val response = client.post("/mandalarts") {
             contentType(ContentType.Application.Json)
-            setBody(CreateMandalartRequest(
+            setBody(
+                CreateMandalartRequest(
                 title = "My mandalart",
                 goal = "My goal"
-            ))
+            )
+            )
         }
 
         assertEquals(HttpStatusCode.Created, response.status)

@@ -1,7 +1,7 @@
-package com.gunb0s.mandalart.repository
+package com.gunb0s.repository
 
-import com.gunb0s.mandalart.model.MainGoal
-import com.gunb0s.mandalart.model.Mandalart
+import com.gunb0s.model.MainGoal
+import com.gunb0s.model.Mandalart
 
 object MandalartRepository {
     private var count = 0
@@ -30,5 +30,9 @@ object MandalartRepository {
         mandalarts[id] = mandalart
 
         return mandalart
+    }
+
+    fun delete(id: String) {
+        mandalarts.remove(id)
     }
 }

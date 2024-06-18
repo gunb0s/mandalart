@@ -10,6 +10,17 @@ Content-Type: application/json
 ### get mandalart detail
 GET http://0.0.0.0:8080/mandalarts/1
 
+### update mandalart
+PATCH http://0.0.0.0:8080/mandalarts/1
+Content-Type: application/json
+
+{
+  "title": "updated title"
+}
+
+### delete mandalart
+DELETE http://0.0.0.0:8080/mandalarts/1
+
 ### create main goal
 POST http://0.0.0.0:8080/mandalarts/1/main-goals
 Content-Type: application/json

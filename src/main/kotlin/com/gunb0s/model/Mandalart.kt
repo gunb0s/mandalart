@@ -1,9 +1,9 @@
-package com.gunb0s.mandalart.model
+package com.gunb0s.model
 
 data class Mandalart(
     val id: String,
-    val title: String,
-    val goal: String,
+    var title: String,
+    var goal: String,
     val mainGoals: MutableList<MainGoal> = mutableListOf()
 ) {
     fun addMainGoal(mainGoal: MainGoal) {

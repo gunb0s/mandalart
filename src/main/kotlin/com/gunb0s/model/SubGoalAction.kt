@@ -1,4 +1,4 @@
-package com.gunb0s.subGoalAction.model
+package com.gunb0s.model
 
 import java.time.LocalDateTime
 

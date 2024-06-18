@@ -1,6 +1,6 @@
-package com.gunb0s.mandalart.dto
+package com.gunb0s.routes.mandalart.dto
 
-import com.gunb0s.mandalart.model.Mandalart
+import com.gunb0s.model.Mandalart
 import kotlinx.serialization.Serializable
 
 @Serializable
