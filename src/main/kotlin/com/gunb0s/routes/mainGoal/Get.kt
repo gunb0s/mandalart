@@ -10,7 +10,7 @@ import io.ktor.server.routing.Route
 import io.ktor.server.routing.get
 
 fun Route.getMainGoalRoute() {
-    get("{id}/mainGoal/{mainGoalLocation}") {
+    get("{id}/main-goals/{mainGoalLocation}") {
         val id = call.parameters["id"]
             ?: throw IllegalArgumentException("Missing id")
         val mainGoalLocation = call.parameters["mainGoalLocation"]
