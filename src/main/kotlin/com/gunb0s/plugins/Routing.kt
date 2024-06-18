@@ -1,6 +1,7 @@
 package com.gunb0s.plugins
 
 import com.gunb0s.routes.mainGoal.createMainGoalRoute
+import com.gunb0s.routes.mainGoal.getMainGoalRoute
 import com.gunb0s.routes.mandalart.createMandalartRoute
 import com.gunb0s.routes.mandalart.deleteMandalartRoute
 import com.gunb0s.routes.mandalart.getMandalartRoute
@@ -17,8 +18,10 @@ fun Application.mandalartRoutes() {
             getMandalartRoute()
             updateMandalartRoute()
             deleteMandalartRoute()
-            
+
             createMainGoalRoute()
+            getMainGoalRoute()
+
             createSubGoalRoute()
             createSubGoalActionRoute()
         }

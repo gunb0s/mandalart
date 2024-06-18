@@ -14,14 +14,7 @@ data class MandalartDto(
     data class MainGoalDto(
         val location: Int,
         val goal: String,
-        val subGoals: List<SubGoalDto>
-    ) {
-        @Serializable
-        data class SubGoalDto(
-            val location: Int,
-            val goal: String
-        )
-    }
+    )
 
     companion object {
         fun fromModel(mandalart: Mandalart): MandalartDto {
@@ -33,12 +26,6 @@ data class MandalartDto(
                     MainGoalDto(
                         location = it.location,
                         goal = it.goal,
-                        subGoals = it.subGoals.map { subGoal ->
-                            MainGoalDto.SubGoalDto(
-                                location = subGoal.location,
-                                goal = subGoal.goal
-                            )
-                        }
                     )
                 }
             )
