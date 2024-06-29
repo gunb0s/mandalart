@@ -1,6 +1,8 @@
 package com.gunb0s.routes.subGoal
 
+import com.gunb0s.common.dto.ResponseDto
 import com.gunb0s.repository.MandalartRepository
+import com.gunb0s.routes.subGoal.dto.SubGoalDto
 import io.ktor.http.HttpStatusCode
 import io.ktor.server.application.call
 import io.ktor.server.response.respond
@@ -21,11 +23,11 @@ fun Route.getSubGoalRoute() {
         val subGoal = MandalartRepository.findSubGoalByLocation(id, mainGoalLocation, subGoalLocation)
             ?: throw IllegalArgumentException("No SubGoal with location $subGoalLocation")
 
-//        val dto = SubGoalDto.fromModel(subGoal)
+        val dto = SubGoalDto.fromModel(subGoal)
 
         call.respond(
             HttpStatusCode.OK,
-//            ResponseDto(data = dto)
+            ResponseDto(data = dto)
         )
     }
 }
