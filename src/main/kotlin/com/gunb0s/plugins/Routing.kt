@@ -7,12 +7,16 @@ import com.gunb0s.routes.mandalart.deleteMandalartRoute
 import com.gunb0s.routes.mandalart.getMandalartRoute
 import com.gunb0s.routes.mandalart.updateMandalartRoute
 import com.gunb0s.routes.subGoal.createSubGoalRoute
+import com.gunb0s.routes.subGoal.getSubGoalRoute
 import com.gunb0s.routes.subGoalAction.createSubGoalActionRoute
 import io.ktor.server.application.Application
-import io.ktor.server.routing.*
+import io.ktor.server.plugins.swagger.swaggerUI
+import io.ktor.server.routing.route
+import io.ktor.server.routing.routing
 
 fun Application.mandalartRoutes() {
     routing {
+        swaggerUI(path = "swagger", swaggerFile = "openapi/documentation.yaml")
         route("/mandalarts") {
             createMandalartRoute()
             getMandalartRoute()
@@ -23,6 +27,8 @@ fun Application.mandalartRoutes() {
             getMainGoalRoute()
 
             createSubGoalRoute()
+            getSubGoalRoute()
+
             createSubGoalActionRoute()
         }
     }

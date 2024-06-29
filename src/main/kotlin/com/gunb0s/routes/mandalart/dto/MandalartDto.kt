@@ -8,10 +8,10 @@ data class MandalartDto(
     val id: String,
     val title: String,
     val goal: String,
-    val mainGoals: List<MainGoalDto>
+    val mainGoals: List<InternalMainGoalDto>
 ) {
     @Serializable
-    data class MainGoalDto(
+    data class InternalMainGoalDto(
         val location: Int,
         val goal: String,
     )
@@ -23,7 +23,7 @@ data class MandalartDto(
                 title = mandalart.title,
                 goal = mandalart.goal,
                 mainGoals = mandalart.mainGoals.map {
-                    MainGoalDto(
+                    InternalMainGoalDto(
                         location = it.location,
                         goal = it.goal,
                     )

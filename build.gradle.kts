@@ -32,6 +32,8 @@ dependencies {
     // register error handler
     implementation("io.ktor:ktor-server-status-pages")
 
+    implementation("io.ktor:ktor-server-swagger")
+
     testImplementation("io.ktor:ktor-server-tests-jvm")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
 }

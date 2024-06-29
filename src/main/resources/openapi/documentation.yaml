@@ -1,0 +1,696 @@
+openapi: "3.0.1"
+info:
+  title: "mandalart API"
+  description: "mandalart API"
+  version: "1.0.0"
+servers:
+- url: "https://mandalart"
+paths:
+  /mandalarts:
+    post:
+      description: ""
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateMandalartRequest"
+        required: true
+      responses:
+        "201":
+          description: "Created"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ResponseDto_CreateMandalartResponse"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    data: "null"
+                    message: "Success"
+                    error: "null"
+  /mandalarts/{id}:
+    delete:
+      description: ""
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "400":
+          description: "Bad Request"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ResponseDto"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    data: "null"
+                    message: "Failed"
+                    error: "null"
+        "204":
+          description: "No Content"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ResponseDto"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    data: "null"
+                    message: "Success"
+                    error: "null"
+    get:
+      description: ""
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "400":
+          description: "Bad Request"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ResponseDto"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    data: "null"
+                    message: "Failed"
+                    error: "null"
+                Example#2:
+                  description: ""
+                  value:
+                    data: "null"
+                    message: "Failed"
+                    error: "null"
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ResponseDto_MandalartDto"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    data: "null"
+                    message: "Success"
+                    error: "null"
+    patch:
+      description: ""
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateMandalartRequest"
+        required: true
+      responses:
+        "400":
+          description: "Bad Request"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ResponseDto"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    data: "null"
+                    message: "Failed"
+                    error: "null"
+                Example#2:
+                  description: ""
+                  value:
+                    data: "null"
+                    message: "Failed"
+                    error: "null"
+        "204":
+          description: "No Content"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ResponseDto"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    data: "null"
+                    message: "Success"
+                    error: "null"
+  /mandalarts/{id}/main-goals:
+    post:
+      description: ""
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateMainGoalRequest"
+        required: true
+      responses:
+        "400":
+          description: "Bad Request"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ResponseDto"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    data: "null"
+                    message: "Failed"
+                    error: "null"
+                Example#2:
+                  description: ""
+                  value:
+                    data: "null"
+                    message: "Failed"
+                    error: "null"
+        "201":
+          description: "Created"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ResponseDto_CreateMainGoalResponse"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    data: "null"
+                    message: "Success"
+                    error: "null"
+  /mandalarts/{id}/main-goals/{mainGoalLocation}:
+    get:
+      description: ""
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      - name: "mainGoalLocation"
+        in: "path"
+        required: true
+        schema:
+          type: "integer"
+      responses:
+        "400":
+          description: "Bad Request"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ResponseDto"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    data: "null"
+                    message: "Failed"
+                    error: "null"
+                Example#2:
+                  description: ""
+                  value:
+                    data: "null"
+                    message: "Failed"
+                    error: "null"
+                Example#3:
+                  description: ""
+                  value:
+                    data: "null"
+                    message: "Failed"
+                    error: "null"
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ResponseDto_MainGoalDto"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    data: "null"
+                    message: "Success"
+                    error: "null"
+  /mandalarts/{id}/main-goals/{mainGoalLocation}/sub-goals:
+    post:
+      description: ""
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      - name: "mainGoalLocation"
+        in: "path"
+        required: true
+        schema:
+          type: "integer"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateSubGoalRequest"
+        required: true
+      responses:
+        "400":
+          description: "Bad Request"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ResponseDto"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    data: "null"
+                    message: "Failed"
+                    error: "null"
+                Example#2:
+                  description: ""
+                  value:
+                    data: "null"
+                    message: "Failed"
+                    error: "null"
+                Example#3:
+                  description: ""
+                  value:
+                    data: "null"
+                    message: "Failed"
+                    error: "null"
+        "201":
+          description: "Created"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ResponseDto_CreateSubGoalResponse"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    data: "null"
+                    message: "Success"
+                    error: "null"
+  /mandalarts/{id}/main-goals/{mainGoalLocation}/sub-goals/{subGoalLocation}:
+    get:
+      description: ""
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      - name: "mainGoalLocation"
+        in: "path"
+        required: true
+        schema:
+          type: "integer"
+      - name: "subGoalLocation"
+        in: "path"
+        required: true
+        schema:
+          type: "integer"
+      responses:
+        "400":
+          description: "Bad Request"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ResponseDto"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    data: "null"
+                    message: "Failed"
+                    error: "null"
+                Example#2:
+                  description: ""
+                  value:
+                    data: "null"
+                    message: "Failed"
+                    error: "null"
+                Example#3:
+                  description: ""
+                  value:
+                    data: "null"
+                    message: "Failed"
+                    error: "null"
+                Example#4:
+                  description: ""
+                  value:
+                    data: "null"
+                    message: "Failed"
+                    error: "null"
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ResponseDto_SubGoalDto"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    data: "null"
+                    message: "Success"
+                    error: "null"
+  /mandalarts/{id}/main-goals/{mainGoalLocation}/sub-goals/{subGoalLocation}/sub-goal-actions:
+    post:
+      description: ""
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      - name: "mainGoalLocation"
+        in: "path"
+        required: true
+        schema:
+          type: "integer"
+      - name: "subGoalLocation"
+        in: "path"
+        required: true
+        schema:
+          type: "integer"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateSubGoalActionRequest"
+        required: true
+      responses:
+        "400":
+          description: "Bad Request"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ResponseDto"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    data: "null"
+                    message: "Failed"
+                    error: "null"
+                Example#2:
+                  description: ""
+                  value:
+                    data: "null"
+                    message: "Failed"
+                    error: "null"
+                Example#3:
+                  description: ""
+                  value:
+                    data: "null"
+                    message: "Failed"
+                    error: "null"
+                Example#4:
+                  description: ""
+                  value:
+                    data: "null"
+                    message: "Failed"
+                    error: "null"
+        "201":
+          description: "Created"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ResponseDto_CreateSubGoalActionResponse"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    data: "null"
+                    message: "Success"
+                    error: "null"
+components:
+  schemas:
+    ResponseDto:
+      type: "object"
+      properties:
+        message:
+          type: "string"
+        error:
+          type: "string"
+      required:
+      - "message"
+    CreateMandalartRequest:
+      type: "object"
+      properties:
+        title:
+          type: "string"
+        goal:
+          type: "string"
+      required:
+      - "title"
+      - "goal"
+    CreateMandalartResponse:
+      type: "object"
+      properties:
+        id:
+          type: "string"
+      required:
+      - "id"
+    ResponseDto_CreateMandalartResponse:
+      type: "object"
+      properties:
+        data:
+          $ref: "#/components/schemas/CreateMandalartResponse"
+        message:
+          type: "string"
+        error:
+          type: "string"
+    InternalMainGoalDto:
+      type: "object"
+      properties:
+        location:
+          type: "integer"
+          format: "int32"
+        goal:
+          type: "string"
+      required:
+      - "goal"
+    MandalartDto:
+      type: "object"
+      properties:
+        id:
+          type: "string"
+        title:
+          type: "string"
+        goal:
+          type: "string"
+        mainGoals:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/InternalMainGoalDto"
+      required:
+      - "id"
+      - "title"
+      - "goal"
+      - "mainGoals"
+    ResponseDto_MandalartDto:
+      type: "object"
+      properties:
+        data:
+          $ref: "#/components/schemas/MandalartDto"
+        message:
+          type: "string"
+        error:
+          type: "string"
+    UpdateMandalartRequest:
+      type: "object"
+      properties:
+        title:
+          type: "string"
+        goal:
+          type: "string"
+    CreateMainGoalRequest:
+      type: "object"
+      properties:
+        location:
+          type: "integer"
+          format: "int32"
+        goal:
+          type: "string"
+      required:
+      - "goal"
+    CreateMainGoalResponse:
+      type: "object"
+      properties:
+        mandalartId:
+          type: "string"
+        location:
+          type: "integer"
+          format: "int32"
+        goal:
+          type: "string"
+      required:
+      - "mandalartId"
+      - "goal"
+    ResponseDto_CreateMainGoalResponse:
+      type: "object"
+      properties:
+        data:
+          $ref: "#/components/schemas/CreateMainGoalResponse"
+        message:
+          type: "string"
+        error:
+          type: "string"
+    InternalSubGoalDto:
+      type: "object"
+      properties:
+        location:
+          type: "integer"
+          format: "int32"
+        goal:
+          type: "string"
+      required:
+      - "goal"
+    MainGoalDto:
+      type: "object"
+      properties:
+        location:
+          type: "integer"
+          format: "int32"
+        goal:
+          type: "string"
+        subGoals:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/InternalSubGoalDto"
+      required:
+      - "goal"
+      - "subGoals"
+    ResponseDto_MainGoalDto:
+      type: "object"
+      properties:
+        data:
+          $ref: "#/components/schemas/MainGoalDto"
+        message:
+          type: "string"
+        error:
+          type: "string"
+    CreateSubGoalRequest:
+      type: "object"
+      properties:
+        location:
+          type: "integer"
+          format: "int32"
+        goal:
+          type: "string"
+      required:
+      - "goal"
+    CreateSubGoalResponse:
+      type: "object"
+      properties:
+        location:
+          type: "integer"
+          format: "int32"
+        goal:
+          type: "string"
+      required:
+      - "goal"
+    ResponseDto_CreateSubGoalResponse:
+      type: "object"
+      properties:
+        data:
+          $ref: "#/components/schemas/CreateSubGoalResponse"
+        message:
+          type: "string"
+        error:
+          type: "string"
+    InternalSubGoalActionDto:
+      type: "object"
+      properties:
+        createdDate:
+          type: "string"
+          format: "date-time"
+        action:
+          type: "string"
+      required:
+      - "createdDate"
+      - "action"
+    SubGoalDto:
+      type: "object"
+      properties:
+        location:
+          type: "integer"
+          format: "int32"
+        goal:
+          type: "string"
+        subGoalActions:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/InternalSubGoalActionDto"
+      required:
+      - "goal"
+      - "subGoalActions"
+    ResponseDto_SubGoalDto:
+      type: "object"
+      properties:
+        data:
+          $ref: "#/components/schemas/SubGoalDto"
+        message:
+          type: "string"
+        error:
+          type: "string"
+    CreateSubGoalActionRequest:
+      type: "object"
+      properties:
+        action:
+          type: "string"
+      required:
+      - "action"
+    CreateSubGoalActionResponse:
+      type: "object"
+      properties:
+        mandalartId:
+          type: "string"
+        mainGoalLocation:
+          type: "integer"
+          format: "int32"
+        subGoalLocation:
+          type: "integer"
+          format: "int32"
+        createdDate:
+          type: "string"
+          format: "date-time"
+        action:
+          type: "string"
+      required:
+      - "mandalartId"
+      - "createdDate"
+      - "action"
+    ResponseDto_CreateSubGoalActionResponse:
+      type: "object"
+      properties:
+        data:
+          $ref: "#/components/schemas/CreateSubGoalActionResponse"
+        message:
+          type: "string"
+        error:
+          type: "string"

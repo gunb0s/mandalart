@@ -8,10 +8,10 @@ import java.time.LocalDateTime
 data class SubGoalDto(
     val location: Int,
     val goal: String,
-    val subGoalActions: List<SubGoalActionDto>
+    val subGoalActions: List<InternalSubGoalActionDto>
 ) {
     @Serializable
-    data class SubGoalActionDto(
+    data class InternalSubGoalActionDto(
         @Serializable(with = LocalDateTimeSerializer::class)
         val createdDate: LocalDateTime,
         val action: String,
@@ -23,7 +23,7 @@ data class SubGoalDto(
                 subGoal.location,
                 subGoal.goal,
                 subGoal.subGoalActions.map {
-                    SubGoalActionDto(
+                    InternalSubGoalActionDto(
                         it.createdDate,
                         it.action
                     )

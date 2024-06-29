@@ -7,10 +7,10 @@ import kotlinx.serialization.Serializable
 data class MainGoalDto(
     val location: Int,
     val goal: String,
-    val subGoals: List<SubGoalDto>
+    val subGoals: List<InternalSubGoalDto>
 ) {
     @Serializable
-    data class SubGoalDto(
+    data class InternalSubGoalDto(
         val location: Int,
         val goal: String
     )
@@ -21,7 +21,7 @@ data class MainGoalDto(
                 location = mainGoal.location,
                 goal = mainGoal.goal,
                 subGoals = mainGoal.subGoals.map { subGoal ->
-                    SubGoalDto(
+                    InternalSubGoalDto(
                         location = subGoal.location,
                         goal = subGoal.goal
                     )
